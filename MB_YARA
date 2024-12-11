@@ -1,0 +1,30 @@
+rule Midnight_Blizzard_YARA {
+    meta:
+        description = "Detection of malicious files based on provided IOCs"
+        author = "sl33pydata"
+        date = "2024-12-11"
+        reference = "Custom rule with MD5, SHA-256, and other indicators"
+
+    strings:
+        $md5_1 = "a5de73d69c1a7fbae2e71b98d48fe9b5"
+        $md5_2 = "8bcb741a204c25232a11a7084aa2221f"
+        $md5_3 = "86f58115c891ce91b7364e5ff0314b31"
+        $md5_4 = "80b3cad4f70b6ea8924aa13d2730328b"
+        $md5_5 = "c0da30b71d58e071fc5863381444d9f0"
+        // Add more MD5 strings as needed
+        $sha256_1 = "34c88cd591f73bc47a1a0fe2a4f594f628be98ad2366eeb4e467595115d8505a"
+        $sha256_2 = "071276e907f185d9e341d549b198e60741e2c7f8d64dd2ca2c5d88d50b2c6ffc"
+        $sha256_3 = "6e6680786fa5b023cf301b6bc5faaa89c86dc34b696f4b078cf22b1b353d5d3c"
+        $sha256_4 = "31f2cc1157248aec5135147073e49406d057bebf78b3361dd7cbb6e37708fbcc"
+        $sha256_5 = "88fd6a36e8a61597dd71755b985e5fcd0b8308b69fc0f4b0fc7960fb80018622"
+        // Add more SHA-256 strings as needed
+        $other_1 = "Trojan.Win32.CozyDuke.TC.fe0eimrU"
+        $other_2 = "Downloader.Win32.ICEBEAT.TC.bb30HcBx"
+        $other_3 = "Backdoor.Win32.GraphicalProton.TC.5e7dpGBo"
+        $other_4 = "Trojan.Win32.CozyDuke.TC.ae99tzIy"
+        $other_5 = "Malware_Generic.P0"
+        // Add more Other IOCs as needed
+
+    condition:
+        any of ($md5*) or any of ($sha256*) or any of ($other*)
+}
